@@ -1,26 +1,30 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {BrowserRouter as Router ,Route , Switch} from 'react-router-dom'
+import CustomerList from './components/CustomerList'
+import HeaderComponent from './components/HeaderComponent';
+import FooterComponent from './components/FooterComponent';
+import CustomerForm from './components/CustomerForm';
+import UpdateCustomer from './components/UpdateCustomer'
+class App extends React.Component {
+  render() {
+    return (
+      <div>
+         <Router>
+               <HeaderComponent></HeaderComponent>
+                  <div className="container">
+                     <Switch>
+                        <Route path="/" exact component={CustomerList}></Route>
+                        <Route path="/add-customer"  component={CustomerForm}></Route>
+                        <Route path="/update-customer/:userId"  component={UpdateCustomer}></Route>
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+                     </Switch>
+             </div>
+               <FooterComponent></FooterComponent>
+          </Router>
+      </div>
+     
+    );
+  }
 }
-
 export default App;
